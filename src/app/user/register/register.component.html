@@ -1,8 +1,64 @@
-<label>User Name:</label>
-<input type="text" [(ngModel)]="userObject.firstName" name="userName"> <br><br>
-<label>Password:</label>
-<input type="password" [(ngModel)]="userObject.lastName"  name="pwd"> <br> <br>
-
-
-<label>{{userObject.firstName}}</label>
-<label>{{userObject.lastName}}</label>
+<form class="border p-3 rounded-1" [formGroup]="registerForm">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+            <span class="fs-3">Register</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="firstName" formControlName="fName">
+            <div class="form-text text-danger" *ngIf="firstName.errors?.['required']  && (firstName.dirty || firstName.touched)">
+                First Name is required
+            </div>
+            <div class="form-text text-danger" *ngIf="firstName.errors?.['minlength']  && (firstName.dirty || firstName.touched)">
+                First Name is too short
+            </div>
+            <div class="form-text text-danger" *ngIf="firstName.errors?.['pattern']  && (firstName.dirty || firstName.touched)">
+                Name should start with an alphabet
+            </div>
+        </div>
+        <div class="col mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lastName" formControlName="lNames">
+            <div class="form-text text-danger" *ngIf="lastName.errors?.['required']  && (lastName.dirty || lastName.touched)">
+                Last Name is required
+            </div>
+            <div class="form-text text-danger" *ngIf="lastName.errors?.['minlength']  && (lastName.dirty || lastName.touched)">
+                Last Name is too short
+            </div>
+            <div class="form-text text-danger" *ngIf="lastName.errors?.['pattern']  && (lastName.dirty || lastName.touched)">
+                Name should start with an alphabet
+            </div>
+        </div>
+    </div>  
+    <div class="row" >
+        <div class="col mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" formControlName="email">
+            <div class="form-text text-danger" *ngIf="email.errors?.['email']  && (email.dirty || email.touched)">
+                Email is required
+            </div>
+            <div class="form-text"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" formControlName="pwd">
+            <div class="form-text"></div>
+        </div>
+        <div class="col mb-3">
+            <label for="repassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" name="password" formControlName="repwd">
+            <div class="form-text"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3 mb-3">
+            <div class="d-grid">
+                <input type="submit" class="btn btn-primary" name="register" [disabled]="registerForm.invalid">
+            </div>
+        </div>
+    </div>
+</form>

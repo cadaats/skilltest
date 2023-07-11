@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
-import { FormsModule } from '@angular/forms';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
